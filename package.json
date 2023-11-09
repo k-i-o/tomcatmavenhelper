@@ -1,0 +1,36 @@
+{
+  "name": "tomcatmavenhelper",
+  "displayName": "Tomcat Maven Helper",
+  "description": "HotReload maven install .war",
+  "version": "0.0.1",
+  "publisher": "SamueleRadici",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [{
+      "command": "tomcatmavenhelper.livemaveninstall",
+      "title": "Live Maven Install: Enable"
+    }]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.84.0",
+    "@types/mocha": "^10.0.3",
+    "@types/node": "18.x",
+    "eslint": "^8.52.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2",
+    "@vscode/test-electron": "^2.3.6"
+  }
+}
