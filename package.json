@@ -2,8 +2,12 @@
   "name": "tomcatmavenhelper",
   "displayName": "Tomcat Maven Helper",
   "description": "HotReload maven install .war",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "SamueleRadici",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k-i-o/tomcatmavenhelper.git"
+  },
   "engines": {
     "vscode": "^1.84.0"
   },
