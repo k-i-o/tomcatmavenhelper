@@ -2,7 +2,7 @@
   "name": "tomcatmavenhelper",
   "displayName": "Tomcat Maven Helper",
   "description": "HotReload maven install .war",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "SamueleRadici",
   "icon": "logo.png",
   "repository": {
