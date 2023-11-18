@@ -3,6 +3,10 @@ const path = require('path');
 const { exec } = require('child_process');
 
 let javaFileWatcher;
+let htmlFileWatcher;
+let cssFileWatcher;
+let jsFileWatcher;
+let jspFileWatcher;
 let timeout;
 let mavenProcess;
 
@@ -44,21 +48,68 @@ function deactivate() {
 
 function monitorJavaFiles(workspaceFolder, pomPath) {
     javaFileWatcher = vscode.workspace.createFileSystemWatcher('**/*.java');
+    htmlFileWatcher = vscode.workspace.createFileSystemWatcher('**/*.html');
+    cssFileWatcher = vscode.workspace.createFileSystemWatcher('**/*.css');
+    jsFileWatcher = vscode.workspace.createFileSystemWatcher('**/*.js');
+    jspFileWatcher = vscode.workspace.createFileSystemWatcher('**/*.jsp');
 
     javaFileWatcher.onDidChange(() => {
-        if (mavenProcess) {
-            mavenProcess.kill();
-            console.log('Compilation process cancelled due to code changes.');
-        }
-        executeMavenInstall(pomPath);
+        setTimeout(() => {
+            if (mavenProcess) {
+                mavenProcess.kill();
+                console.log('Compilation process cancelled due to code changes.');
+            }
+            executeMavenInstall(pomPath);
+        }, 500);
     });
+
+    htmlFileWatcher.onDidChange(() => {
+        setTimeout(() => {
+            if (mavenProcess) {
+                mavenProcess.kill();
+                console.log('Compilation process cancelled due to code changes.');
+            }
+            executeMavenInstall(pomPath);
+        }, 500);
+    });
+
+    cssFileWatcher.onDidChange(() => {
+        setTimeout(() => {
+            if (mavenProcess) {
+                mavenProcess.kill();
+                console.log('Compilation process cancelled due to code changes.');
+            }
+            executeMavenInstall(pomPath);
+        }, 500);
+    });
+
+    jsFileWatcher.onDidChange(() => {
+        setTimeout(() => {
+            if (mavenProcess) {
+                mavenProcess.kill();
+                console.log('Compilation process cancelled due to code changes.');
+            }
+            executeMavenInstall(pomPath);
+        }, 500);
+    });
+
+    jspFileWatcher.onDidChange(() => {
+        setTimeout(() => {
+            if (mavenProcess) {
+                mavenProcess.kill();
+                console.log('Compilation process cancelled due to code changes.');
+            }
+            executeMavenInstall(pomPath);
+        }, 500);
+    });
+    
 }
 
 function executeMavenInstall(pomPath) {
 
     mavenProcess = exec(`mvn install -f ${pomPath}`, (error) => {
         if (error) {
-            vscode.window.showErrorMessage(`Error executing 'mvn install': ${error.message}`);
+            vscode.window.showWarningMessage(`Compiling restarted or error executing 'mvn install': ${error.message}`);
         }
     });
 
