@@ -107,7 +107,7 @@ function monitorJavaFiles(workspaceFolder, pomPath) {
 
 function executeMavenInstall(pomPath) {
 
-    mavenProcess = exec(`mvn install -f ${pomPath}`, (error) => {
+    mavenProcess = exec(`mvn package -f ${pomPath}`, (error) => {
         if (error) {
             vscode.window.showWarningMessage(`Compiling restarted or error executing 'mvn install': ${error.message}`);
         }
