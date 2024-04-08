@@ -15,8 +15,19 @@ let mavenProcess;
  */
 function activate(context) {
     let disposable = vscode.commands.registerCommand('tomcatmavenhelper.livemaveninstall', function () {
+               
+        if (!vscode.workspace.workspaceFolders) {
+            vscode.window.showErrorMessage('No workspace opened!');
+            return;
+        }
+
         const workspaceFolder = vscode.workspace.workspaceFolders[0]; 
         const pomPath = path.join(workspaceFolder.uri.fsPath, 'pom.xml');
+
+        if (!pomPath) {
+            vscode.window.showErrorMessage('No pom.xml found in the workspace!');
+            return;
+        }
 
         monitorJavaFiles(workspaceFolder, pomPath);
 
