@@ -118,7 +118,7 @@ function monitorJavaFiles(workspaceFolder, pomPath) {
 
 function executeMavenInstall(pomPath) {
 
-    mavenProcess = exec(`mvn package -f ${pomPath}`, (error) => {
+    mavenProcess = exec(`mvn package -f '${pomPath}'`, (error) => {
         if (error) {
             vscode.window.showWarningMessage(`Compiling restarted or error executing 'mvn install': ${error.message}`);
         }
@@ -127,7 +127,7 @@ function executeMavenInstall(pomPath) {
     mavenProcess.on('exit', (code) => {
         if (code === 0) {
             setTimeout(() => {
-                vscode.window.showInformationMessage(`'mvn install' completed successfully!`);
+                vscode.window.showInformationMessage(`'mvn package' completed successfully!`);
             }, 1000);
         }
     });
